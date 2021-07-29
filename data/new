@@ -1,0 +1,17 @@
+import net from 'net';
+
+const client = net.connect(6543, 'localhost', () => {
+  client.write('Hello');
+});
+
+import net from 'net';
+
+const server = net.createServer((connectedClient) => {
+  console.log('Client connected!');
+
+  connectedClient.on('data', (data) => {
+    console.log(data);
+  });
+});
+
+server.listen(6543);
